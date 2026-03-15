@@ -31,6 +31,10 @@
       </p>
     </section>
 
+    <section class="story-trailer">
+      <button id="playStoryButton" class="story-button hidden" type="button">▶ Play Our Story</button>
+    </section>
+
     <button id="showAlbum" class="album-trigger hidden" type="button">Open Special Album 💖</button>
 
     <section id="albumSection" class="album-section hidden">
@@ -60,6 +64,17 @@
       </div>
     </section>
   </main>
+
+  <div id="storyOverlay" class="story-overlay" aria-hidden="true">
+    <div class="story-overlay-content">
+      <p class="story-line">In a world full of strangers...</p>
+      <p class="story-line">One message changed everything.</p>
+      <p class="story-line">Two hearts met...</p>
+      <p class="story-line">Two souls connected...</p>
+      <p class="story-line">And today we celebrate the birthday of the most beautiful girl in my life.</p>
+      <p class="story-line story-line-final">Happy Birthday My Love 💖</p>
+    </div>
+  </div>
 
   <audio id="backgroundMusic" src="song.mp3" loop preload="auto"></audio>
   <script src="script.js"></script>

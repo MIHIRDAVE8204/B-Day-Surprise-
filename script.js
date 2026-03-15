@@ -7,6 +7,9 @@ const albumSection = document.getElementById('albumSection');
 const closeAlbumButton = document.getElementById('closeAlbum');
 const loveLetter = document.querySelector('.love-letter');
 const letterText = document.querySelector('.letter-text');
+const playStoryButton = document.getElementById('playStoryButton');
+const storyOverlay = document.getElementById('storyOverlay');
+const storyLines = document.querySelectorAll('.story-line');
 
 let letterIndex = 0;
 let isTyping = false;
@@ -17,6 +20,8 @@ let lastHeartTime = 0;
 let hasOpenedCurtains = false;
 let hasOpenedSurprise = false;
 let hasStartedMusic = false;
+let isStoryPlaying = false;
+let storyTimers = [];
 
 function normalizeLetterText(text) {
   return text
@@ -250,6 +255,48 @@ function startBackgroundMusic() {
   });
 }
 
+function resetStoryTrailer() {
+  storyTimers.forEach((timer) => {
+    clearTimeout(timer);
+  });
+
+  storyTimers = [];
+  storyLines.forEach((line) => {
+    line.classList.remove('visible');
+  });
+
+  if (storyOverlay) {
+    storyOverlay.classList.remove('visible');
+    storyOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  isStoryPlaying = false;
+}
+
+function playStoryTrailer() {
+  if (!storyOverlay || storyLines.length === 0 || isStoryPlaying) {
+    return;
+  }
+
+  isStoryPlaying = true;
+  storyOverlay.classList.add('visible');
+  storyOverlay.setAttribute('aria-hidden', 'false');
+
+  storyLines.forEach((line, index) => {
+    const timer = setTimeout(() => {
+      line.classList.add('visible');
+    }, 600 + (index * 1800));
+
+    storyTimers.push(timer);
+  });
+
+  const closeTimer = setTimeout(() => {
+    resetStoryTrailer();
+  }, 600 + (storyLines.length * 1800) + 1800);
+
+  storyTimers.push(closeTimer);
+}
+
 startHearts();
 startPetals();
 
@@ -291,6 +338,15 @@ surpriseButton.addEventListener('click', () => {
   surpriseButton.classList.add('button-hidden');
   message.classList.remove('hidden');
   loveLetter.classList.add('visible');
+  playStoryButton.classList.remove('hidden');
   showAlbumButton.classList.remove('hidden');
   startLetterTyping();
 });
+
+if (playStoryButton) {
+  playStoryButton.addEventListener('click', playStoryTrailer);
+}
+
+if (storyOverlay) {
+  storyOverlay.addEventListener('click', resetStoryTrailer);
+}
