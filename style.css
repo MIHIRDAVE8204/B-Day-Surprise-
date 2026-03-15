@@ -369,7 +369,7 @@ button:focus-visible {
   border-top-width: 1px;
   opacity: 1;
   transform: translateY(0);
-  max-height: 420px;
+  max-height: 1200px;
   visibility: visible;
 }
 
@@ -393,9 +393,18 @@ button:focus-visible {
 }
 
 .story-button {
+  display: inline-block;
   background: linear-gradient(135deg, rgba(33, 15, 40, 0.96), rgba(79, 31, 76, 0.96));
   border: 1px solid rgba(255, 206, 226, 0.28);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+}
+
+.story-button.story-button-visible {
+  opacity: 1;
+  visibility: visible;
+  max-height: 80px;
+  margin-top: 0;
+  pointer-events: auto;
 }
 
 .story-button:hover {
@@ -409,13 +418,45 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(5, 3, 8, 0.88);
-  backdrop-filter: blur(10px);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 120, 156, 0.14), transparent 26%),
+    radial-gradient(circle at 80% 24%, rgba(214, 113, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(12, 6, 12, 0.72), rgba(8, 4, 10, 0.8));
+  backdrop-filter: blur(8px);
   z-index: 20;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.story-overlay::before,
+.story-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.story-overlay::before {
+  background:
+    radial-gradient(ellipse at 12% -4%, rgba(255, 164, 192, 0.26) 0 10px, transparent 11px),
+    radial-gradient(ellipse at 24% 14%, rgba(255, 132, 170, 0.22) 0 9px, transparent 10px),
+    radial-gradient(ellipse at 82% 8%, rgba(255, 148, 183, 0.24) 0 10px, transparent 11px),
+    radial-gradient(ellipse at 68% 24%, rgba(255, 122, 163, 0.18) 0 8px, transparent 9px),
+    radial-gradient(ellipse at 38% 6%, rgba(255, 176, 201, 0.18) 0 9px, transparent 10px);
+  animation: story-petals-front 16s linear infinite;
+  opacity: 0.85;
+}
+
+.story-overlay::after {
+  background:
+    radial-gradient(ellipse at 18% -8%, rgba(255, 176, 201, 0.14) 0 8px, transparent 9px),
+    radial-gradient(ellipse at 54% 10%, rgba(255, 134, 171, 0.16) 0 10px, transparent 11px),
+    radial-gradient(ellipse at 74% -2%, rgba(255, 161, 194, 0.12) 0 8px, transparent 9px),
+    radial-gradient(ellipse at 90% 18%, rgba(255, 120, 156, 0.16) 0 9px, transparent 10px);
+  animation: story-petals-back 22s linear infinite;
+  opacity: 0.7;
 }
 
 .story-overlay.visible {
@@ -433,14 +474,21 @@ button:focus-visible {
   margin: 0;
   min-height: 2.8em;
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(18px) scale(0.96);
+  filter: blur(10px);
   color: #fff4f8;
-  font-size: clamp(1.25rem, 3.6vw, 2.1rem);
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  font-family: "Nirmala UI", "Kokila", "Mangal", "Noto Serif Devanagari", serif;
+  font-size: clamp(1.05rem, 3vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
   text-shadow: 0 0 18px rgba(255, 132, 180, 0.2);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease,
+    letter-spacing 1s ease,
+    text-shadow 1s ease;
 }
 
 .story-line + .story-line {
@@ -449,12 +497,25 @@ button:focus-visible {
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  letter-spacing: 0.005em;
+  text-shadow:
+    0 0 18px rgba(255, 132, 180, 0.28),
+    0 0 38px rgba(255, 132, 180, 0.12);
 }
 
 .story-line-final {
   color: #ffd8ea;
-  text-shadow: 0 0 24px rgba(255, 117, 173, 0.35);
+  font-family: "Nirmala UI", "Kokila", "Mangal", "Noto Serif Devanagari", serif;
+  font-weight: 700;
+  text-shadow:
+    0 0 24px rgba(255, 117, 173, 0.35),
+    0 0 42px rgba(255, 117, 173, 0.18);
+}
+
+.story-line-final.visible {
+  animation: story-final-glow 2.6s ease-in-out infinite alternate;
 }
 
 .album-trigger {
@@ -624,6 +685,42 @@ button:focus-visible {
   }
 }
 
+@keyframes story-final-glow {
+  0% {
+    transform: translateY(0) scale(1);
+    text-shadow:
+      0 0 18px rgba(255, 117, 173, 0.24),
+      0 0 28px rgba(255, 117, 173, 0.1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1.02);
+    text-shadow:
+      0 0 28px rgba(255, 117, 173, 0.42),
+      0 0 52px rgba(255, 117, 173, 0.2);
+  }
+}
+
+@keyframes story-petals-front {
+  0% {
+    transform: translateY(-6%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(108%) rotate(10deg);
+  }
+}
+
+@keyframes story-petals-back {
+  0% {
+    transform: translateY(-12%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(112%) rotate(-12deg);
+  }
+}
+
 @media (max-width: 480px) {
   body {
     padding: 18px;
@@ -644,7 +741,7 @@ button:focus-visible {
   .love-letter.visible {
     margin-top: 32px;
     padding-top: 24px;
-    max-height: 520px;
+    max-height: 1400px;
   }
 
   .album-trigger {
@@ -658,7 +755,7 @@ button:focus-visible {
 
   .story-line {
     min-height: 3.4em;
-    font-size: clamp(1.08rem, 5vw, 1.45rem);
+    font-size: clamp(0.98rem, 4.6vw, 1.28rem);
   }
 
   .curtain-overlay::before {

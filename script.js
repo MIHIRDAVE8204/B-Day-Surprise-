@@ -285,14 +285,14 @@ function playStoryTrailer() {
   storyLines.forEach((line, index) => {
     const timer = setTimeout(() => {
       line.classList.add('visible');
-    }, 600 + (index * 1800));
+    }, 700 + (index * 2400));
 
     storyTimers.push(timer);
   });
 
   const closeTimer = setTimeout(() => {
     resetStoryTrailer();
-  }, 600 + (storyLines.length * 1800) + 1800);
+  }, 700 + (storyLines.length * 2400) + 2600);
 
   storyTimers.push(closeTimer);
 }
@@ -338,9 +338,28 @@ surpriseButton.addEventListener('click', () => {
   surpriseButton.classList.add('button-hidden');
   message.classList.remove('hidden');
   loveLetter.classList.add('visible');
-  playStoryButton.classList.remove('hidden');
-  showAlbumButton.classList.remove('hidden');
-  startLetterTyping();
+  loveLetter.style.maxHeight = `${loveLetter.scrollHeight + 800}px`;
+
+  if (playStoryButton) {
+    playStoryButton.classList.remove('hidden');
+    playStoryButton.classList.add('story-button-visible');
+    playStoryButton.style.display = 'inline-block';
+  }
+
+  if (showAlbumButton) {
+    showAlbumButton.classList.remove('hidden');
+  }
+
+  if (fullLetterText) {
+    startLetterTyping();
+
+    setTimeout(() => {
+      if (letterText && !letterText.textContent.trim()) {
+        letterText.textContent = fullLetterText;
+        isTyping = false;
+      }
+    }, 250);
+  }
 });
 
 if (playStoryButton) {
