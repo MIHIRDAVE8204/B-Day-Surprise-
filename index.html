@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="curtain-closed">
+  <div class="curtain-overlay" aria-hidden="true">
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
+  </div>
+
+  <main>
+    <h1>Happy Birthday My Love 💖</h1>
+    <button id="surpriseButton" class="stage-hidden" type="button">Open Your Surprise 💖</button>
+    <p id="message" class="hidden">Your surprise will appear soon ✨</p>
+
+    <section class="love-letter">
+      <h2>A Letter For My Special One</h2>
+      <p class="letter-text">
+पहले तो म्हूं सोचतो थो, प्यार-व्यार सब फिल्मां में ही होवे है।
+पर जद थूं मिली, तो समझ आयो के भगवान भी कभी-कभी दिल खोल के gift दे देवे है।
+थारी आदत भी अजीब है — कदे हसावो, कदे परेशान करावो।
+पर साच बताऊं, थारा बिना म्हारो दिन भी चालतो नी और रात भी कटती नी।
+थूं साथ रहजो बस, बाकी सारी टेंशन म्हूं संभाळ लूँगो।
+और हाँ, आज थारो जन्मदिन है… तो आज के दिन थाने थोड़ा ज्यादा प्यार करने रो लाइसेंस मिल गयो।
+      </p>
+    </section>
+
+    <button id="showAlbum" class="album-trigger hidden" type="button">Open Special Album 💖</button>
+
+    <section id="albumSection" class="album-section hidden">
+      <button id="closeAlbum" class="close-button" type="button">✕</button>
+      <h2>Our Special Album 📸❤️</h2>
+      <div class="album-grid">
+        <div class="album-photo">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23ffe4e6' rx='12'/%3E%3Ctext x='200' y='250' text-anchor='middle' fill='%23d63384' font-size='28' font-family='serif'%3ELove Moment 1%3C/text%3E%3C/svg%3E"
+            alt="Love moment 1">
+        </div>
+        <div class="album-photo">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23f3e5f5' rx='12'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23ab47bc'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%23ab47bc' font-size='28' font-family='serif'%3ELove Moment 2%3C/text%3E%3C/svg%3E"
+            alt="Love moment 2">
+        </div>
+        <div class="album-photo">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23e8f5e8' rx='12'/%3E%3Cpath d='M100 150 Q200 100 300 150' stroke='%2369f0ae' stroke-width='20' fill='none'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%2369f0ae' font-size='28' font-family='serif'%3ELove Moment 3%3C/text%3E%3C/svg%3E"
+            alt="Love moment 3">
+        </div>
+        <div class="album-photo">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23fff3e0' rx='12'/%3E%3Ccircle cx='200' cy='200' r='60' fill='%23ff9800'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%23ff9800' font-size='28' font-family='serif'%3ELove Moment 4%3C/text%3E%3C/svg%3E"
+            alt="Love moment 4">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="backgroundMusic" src="song.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+
+</html>
