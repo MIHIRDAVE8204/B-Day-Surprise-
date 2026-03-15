@@ -8,7 +8,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="curtain-closed">
+<body class="site-locked curtain-closed">
+  <div class="password-screen" id="passwordScreen">
+    <div class="password-card">
+      <p class="password-kicker">Private For Us</p>
+      <h2>Enter The Secret Code 💖</h2>
+      <p class="password-text">Only you and I should open this little birthday world.</p>
+      <form id="passwordForm" class="password-form">
+        <input
+          id="passwordInput"
+          class="password-input"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="off"
+          required>
+        <button type="submit">Unlock Surprise</button>
+      </form>
+      <p id="passwordError" class="password-error" aria-live="polite"></p>
+    </div>
+  </div>
+
   <div class="curtain-overlay" aria-hidden="true">
     <div class="curtain-panel curtain-left"></div>
     <div class="curtain-panel curtain-right"></div>
@@ -39,27 +58,31 @@
 
     <section id="albumSection" class="album-section hidden">
       <button id="closeAlbum" class="close-button" type="button">✕</button>
-      <h2>Our Special Album 📸❤️</h2>
+      <h2>Moments Of My Queen 👑💖</h2>
       <div class="album-grid">
         <div class="album-photo">
-          <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23ffe4e6' rx='12'/%3E%3Ctext x='200' y='250' text-anchor='middle' fill='%23d63384' font-size='28' font-family='serif'%3ELove Moment 1%3C/text%3E%3C/svg%3E"
-            alt="Love moment 1">
+          <img src="IMG-20260225-WA0001.jpg" alt="A special memory photo">
+          <span>my love</span>
         </div>
         <div class="album-photo">
-          <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23f3e5f5' rx='12'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23ab47bc'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%23ab47bc' font-size='28' font-family='serif'%3ELove Moment 2%3C/text%3E%3C/svg%3E"
-            alt="Love moment 2">
+          <img src="IMG-20260225-WA0004.jpg" alt="A special memory photo">
+          <span>my queen</span>
         </div>
         <div class="album-photo">
-          <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23e8f5e8' rx='12'/%3E%3Cpath d='M100 150 Q200 100 300 150' stroke='%2369f0ae' stroke-width='20' fill='none'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%2369f0ae' font-size='28' font-family='serif'%3ELove Moment 3%3C/text%3E%3C/svg%3E"
-            alt="Love moment 3">
+          <img src="IMG-20260225-WA0001.jpg" alt="A special memory photo">
+          <span>forever us</span>
         </div>
         <div class="album-photo">
-          <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23fff3e0' rx='12'/%3E%3Ccircle cx='200' cy='200' r='60' fill='%23ff9800'/%3E%3Ctext x='200' y='300' text-anchor='middle' fill='%23ff9800' font-size='28' font-family='serif'%3ELove Moment 4%3C/text%3E%3C/svg%3E"
-            alt="Love moment 4">
+          <img src="IMG-20260225-WA0004.jpg" alt="A special memory photo">
+          <span>sweet soul</span>
+        </div>
+        <div class="album-photo">
+          <img src="IMG-20260312-WA0001.jpg" alt="A special memory photo">
+          <span>my heart</span>
+        </div>
+        <div class="album-photo">
+          <img src="IMG-20260225-WA0001.jpg" alt="A special memory photo">
+          <span>only you</span>
         </div>
       </div>
     </section>

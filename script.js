@@ -1,4 +1,8 @@
 const pageBody = document.body;
+const passwordScreen = document.getElementById('passwordScreen');
+const passwordForm = document.getElementById('passwordForm');
+const passwordInput = document.getElementById('passwordInput');
+const passwordError = document.getElementById('passwordError');
 const surpriseButton = document.getElementById('surpriseButton');
 const message = document.getElementById('message');
 const backgroundMusic = document.getElementById('backgroundMusic');
@@ -22,6 +26,7 @@ let hasOpenedSurprise = false;
 let hasStartedMusic = false;
 let isStoryPlaying = false;
 let storyTimers = [];
+const sitePassword = 'betu123';
 
 function normalizeLetterText(text) {
   return text
@@ -301,6 +306,10 @@ startHearts();
 startPetals();
 
 document.addEventListener('click', (event) => {
+  if (pageBody.classList.contains('site-locked')) {
+    return;
+  }
+
   startBackgroundMusic();
 
   if (event.target.id === 'showAlbum') {
@@ -314,6 +323,7 @@ document.addEventListener('click', (event) => {
     albumSection.classList.add('hidden');
     showAlbumButton.style.display = '';
     showAlbumButton.classList.remove('hidden');
+
     return;
   }
 
@@ -325,6 +335,10 @@ document.addEventListener('click', (event) => {
 });
 
 document.addEventListener('touchstart', () => {
+  if (pageBody.classList.contains('site-locked')) {
+    return;
+  }
+
   startBackgroundMusic();
   openCurtains();
 }, { passive: true });
@@ -368,4 +382,32 @@ if (playStoryButton) {
 
 if (storyOverlay) {
   storyOverlay.addEventListener('click', resetStoryTrailer);
+}
+
+if (passwordForm) {
+  passwordForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const enteredPassword = passwordInput ? passwordInput.value.trim() : '';
+
+    if (enteredPassword !== sitePassword) {
+      if (passwordError) {
+        passwordError.textContent = 'Wrong password. Try again, my love.';
+      }
+
+      if (passwordInput) {
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+
+      return;
+    }
+
+    pageBody.classList.remove('site-locked');
+
+    if (passwordScreen) {
+      passwordScreen.classList.add('hidden');
+      passwordScreen.setAttribute('aria-hidden', 'true');
+    }
+  });
 }
