@@ -255,6 +255,177 @@ body::after {
   right: 16px;
 }
 
+.dreamscape {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dreamscape span {
+  position: absolute;
+  pointer-events: none;
+}
+
+.sky-star {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 247, 252, 0.96);
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.78),
+    0 0 30px rgba(255, 182, 218, 0.42);
+  animation:
+    star-twinkle 4.1s ease-in-out infinite,
+    star-drift 18s ease-in-out infinite;
+}
+
+.sky-star::before,
+.sky-star::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(255, 246, 251, 0.78);
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+}
+
+.sky-star::before {
+  width: 1px;
+  height: 18px;
+}
+
+.sky-star::after {
+  width: 18px;
+  height: 1px;
+}
+
+.star-1 { top: 5%; left: 7%; animation-delay: -0.4s, -2s; }
+.star-2 { top: 12%; left: 27%; animation-delay: -2s, -7s; }
+.star-3 { top: 8%; left: 58%; animation-delay: -1.4s, -4s; }
+.star-4 { top: 16%; left: 83%; animation-delay: -3.1s, -10s; }
+.star-5 { top: 33%; left: 20%; animation-delay: -0.8s, -6s; }
+.star-6 { top: 45%; left: 71%; animation-delay: -2.8s, -12s; }
+.star-7 { top: 69%; left: 25%; animation-delay: -1.7s, -8s; }
+.star-8 { top: 77%; left: 88%; animation-delay: -3.6s, -14s; }
+.star-9 { top: 22%; left: 48%; animation-delay: -1.2s, -5s; }
+.star-10 { top: 38%; left: 90%; animation-delay: -2.6s, -11s; }
+.star-11 { top: 61%; left: 57%; animation-delay: -0.3s, -9s; }
+.star-12 { top: 87%; left: 73%; animation-delay: -4.2s, -15s; }
+
+.sky-heart {
+  font-size: clamp(20px, 2.4vw, 32px);
+  line-height: 1;
+  color: rgba(201, 132, 238, 0.38);
+  filter: blur(0.2px) drop-shadow(0 0 18px rgba(171, 108, 224, 0.24));
+  animation:
+    gentle-float 10.5s ease-in-out infinite,
+    heart-drift 20s linear infinite;
+}
+
+.sky-heart::before {
+  content: "\2665";
+}
+
+.sky-heart-1 { top: 14%; left: 63%; animation-delay: -1.5s, -5s; }
+.sky-heart-2 { top: 33%; left: 10%; animation-delay: -5.5s, -12s; }
+.sky-heart-3 { top: 58%; left: 83%; animation-delay: -3s, -17s; }
+.sky-heart-4 { top: 84%; left: 6%; animation-delay: -7.2s, -9s; }
+.sky-heart-5 { top: 20%; left: 88%; animation-delay: -2.2s, -14s; }
+.sky-heart-6 { top: 52%; left: 26%; animation-delay: -6.1s, -3s; }
+.sky-heart-7 { top: 73%; left: 61%; animation-delay: -4.7s, -19s; }
+
+.sky-balloon {
+  width: 30px;
+  height: 42px;
+  border-radius: 50% 50% 45% 45%;
+  opacity: 0.4;
+  animation:
+    balloon-sway 13s ease-in-out infinite,
+    balloon-rise 26s linear infinite;
+}
+
+.sky-balloon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(105, 129, 255, 0.6), rgba(91, 89, 180, 0.28));
+}
+
+.sky-balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 54px;
+  background: linear-gradient(180deg, rgba(196, 204, 255, 0.22), transparent);
+  transform: translateX(-50%);
+}
+
+.balloon-1 { top: 24%; left: 8%; animation-delay: -1.5s, -6s; }
+.balloon-2 { top: 41%; left: 43%; animation-delay: -6.2s, -17s; }
+.balloon-3 { top: 57%; left: 14%; animation-delay: -3.6s, -12s; }
+.balloon-4 { top: 46%; left: 88%; animation-delay: -8.5s, -20s; }
+.balloon-5 { top: 17%; left: 76%; animation-delay: -4.4s, -9s; }
+.balloon-6 { top: 71%; left: 92%; animation-delay: -7.8s, -23s; }
+
+.sky-confetti {
+  width: 10px;
+  height: 7px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #ffb1d4, #c799ff);
+  opacity: 0.94;
+  box-shadow: 0 0 12px rgba(255, 154, 204, 0.28);
+  animation:
+    confetti-drift 8.8s ease-in-out infinite,
+    confetti-fall 13s linear infinite;
+}
+
+.confetti-1 { top: 10%; left: 2%; animation-delay: -0.8s, -2s; }
+.confetti-2 { top: 18%; left: 23%; animation-delay: -4.1s, -8s; }
+.confetti-3 { top: 11%; left: 55%; animation-delay: -2.4s, -5s; }
+.confetti-4 { top: 8%; left: 70%; animation-delay: -6.5s, -11s; }
+.confetti-5 { top: 14%; left: 83%; animation-delay: -3.7s, -7s; }
+.confetti-6 { top: 28%; left: 92%; animation-delay: -8.1s, -12s; }
+.confetti-7 { top: 6%; left: 14%; animation-delay: -1.9s, -4s; }
+.confetti-8 { top: 22%; left: 37%; animation-delay: -5.4s, -10s; }
+.confetti-9 { top: 18%; left: 62%; animation-delay: -7.3s, -6s; }
+.confetti-10 { top: 31%; left: 78%; animation-delay: -2.7s, -9s; }
+
+.sky-streak {
+  width: 122px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(219, 229, 255, 0.52), transparent);
+  opacity: 0.5;
+  transform: rotate(-30deg);
+  transform-origin: left center;
+  animation: streak-glide 7s ease-in-out infinite;
+}
+
+.streak-1 {
+  top: 24%;
+  left: 20%;
+  animation-delay: -1.6s;
+}
+
+.streak-2 {
+  top: 53%;
+  left: 68%;
+  width: 104px;
+  animation-delay: -5s;
+}
+
+.streak-3 {
+  top: 30%;
+  left: 80%;
+  width: 92px;
+  animation-delay: -3.1s;
+}
+
 .heart-field {
   position: fixed;
   inset: 0;
@@ -863,6 +1034,134 @@ button:focus-visible {
   }
 }
 
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes star-drift {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 12px -10px;
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes heart-drift {
+  0% {
+    transform: translate3d(0, 18px, 0) scale(0.9);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.38;
+  }
+
+  50% {
+    transform: translate3d(18px, -22px, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-10px, -60px, 0) scale(1.08);
+    opacity: 0;
+  }
+}
+
+@keyframes balloon-sway {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translate3d(10px, -16px, 0) rotate(3deg);
+  }
+}
+
+@keyframes balloon-rise {
+  0% {
+    transform: translate3d(0, 30px, 0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.42;
+  }
+
+  50% {
+    transform: translate3d(14px, -28px, 0);
+  }
+
+  100% {
+    transform: translate3d(-8px, -96px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(12deg);
+  }
+
+  50% {
+    transform: translate3d(-10px, 16px, 0) rotate(-12deg);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.95;
+  }
+
+  50% {
+    transform: translate3d(18px, 120px, 0) rotate(120deg);
+  }
+
+  100% {
+    transform: translate3d(-12px, 260px, 0) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+@keyframes streak-glide {
+  0%, 100% {
+    opacity: 0.12;
+    transform: rotate(-30deg) translateX(0);
+  }
+
+  45% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 0.15;
+    transform: rotate(-30deg) translateX(18px);
+  }
+}
+
 @keyframes glow-drift-left {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -989,10 +1288,11 @@ button:focus-visible {
   }
 
   .story-overlay::before {
-    background-position: center 10%;
-    filter: blur(5px) saturate(1.05);
-    transform: scale(1.02);
-    opacity: 0.96;
+    background-size: 235%;
+    background-position: 52% 12%;
+    filter: blur(4px) saturate(1.08);
+    transform: scale(1.08);
+    opacity: 0.98;
   }
 
   .story-overlay::after {
@@ -1010,12 +1310,39 @@ button:focus-visible {
 
   .story-overlay-content {
     margin: 0 auto;
-    padding-bottom: min(38vh, 260px);
+    width: min(100%, 320px);
+    padding-bottom: min(34vh, 220px);
+    padding-inline: 6px;
   }
 
   .story-line {
-    min-height: 3.4em;
-    font-size: clamp(0.98rem, 4.6vw, 1.28rem);
+    min-height: 3.1em;
+    font-size: clamp(1rem, 4.4vw, 1.22rem);
+    line-height: 1.55;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  .story-line + .story-line {
+    margin-top: 10px;
+  }
+
+  .sky-star::before {
+    height: 12px;
+  }
+
+  .sky-star::after {
+    width: 12px;
+  }
+
+  .sky-balloon {
+    width: 22px;
+    height: 32px;
+  }
+
+  .sky-streak {
+    width: 86px;
+    opacity: 0.34;
   }
 
   .curtain-overlay::before {
