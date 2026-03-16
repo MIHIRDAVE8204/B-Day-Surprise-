@@ -777,7 +777,7 @@ button:focus-visible {
   font-family: "Nirmala UI", "Kokila", "Mangal", "Noto Serif Devanagari", serif;
   font-size: clamp(1.05rem, 3vw, 1.7rem);
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.82;
   letter-spacing: 0.01em;
   text-shadow: 0 0 18px rgba(255, 132, 180, 0.2);
   transition:
@@ -789,7 +789,7 @@ button:focus-visible {
 }
 
 .story-line + .story-line {
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .story-line.visible {
@@ -1310,16 +1310,16 @@ button:focus-visible {
 
   .story-overlay-content {
     margin: 0 auto;
-    width: min(100%, 320px);
+    width: min(100%, 336px);
     padding-bottom: min(34vh, 220px);
-    padding-inline: 6px;
+    padding-inline: 10px;
   }
 
   .story-line {
-    min-height: 3.1em;
-    font-size: clamp(1rem, 4.4vw, 1.22rem);
-    line-height: 1.55;
-    letter-spacing: 0;
+    min-height: 0;
+    font-size: clamp(1.06rem, 4.7vw, 1.3rem);
+    line-height: 1.56;
+    letter-spacing: 0.005em;
     text-wrap: balance;
   }
 

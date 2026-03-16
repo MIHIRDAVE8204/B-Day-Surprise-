@@ -27,6 +27,7 @@ let hasStartedMusic = false;
 let isStoryPlaying = false;
 let storyTimers = [];
 const sitePassword = 'betu123';
+const storyTypingSpeed = 42;
 
 function normalizeLetterText(text) {
   return text
@@ -37,6 +38,7 @@ function normalizeLetterText(text) {
 }
 
 const fullLetterText = letterText ? normalizeLetterText(letterText.textContent) : '';
+const storyLineTexts = Array.from(storyLines, (line) => normalizeLetterText(line.textContent));
 
 if (backgroundMusic) {
   backgroundMusic.volume = 0.7;
@@ -45,6 +47,10 @@ if (backgroundMusic) {
 if (letterText) {
   letterText.textContent = '';
 }
+
+storyLines.forEach((line) => {
+  line.textContent = '';
+});
 
 function typeLetter() {
   if (!letterText || letterIndex >= fullLetterText.length) {
@@ -268,6 +274,7 @@ function resetStoryTrailer() {
   storyTimers = [];
   storyLines.forEach((line) => {
     line.classList.remove('visible');
+    line.textContent = '';
   });
 
   if (storyOverlay) {
@@ -276,6 +283,29 @@ function resetStoryTrailer() {
   }
 
   isStoryPlaying = false;
+}
+
+function typeStoryLine(line, text, index = 0) {
+  if (!line) {
+    return;
+  }
+
+  if (index === 0) {
+    line.textContent = '';
+    line.classList.add('visible');
+  }
+
+  if (index >= text.length) {
+    return;
+  }
+
+  line.textContent += text.charAt(index);
+
+  const timer = setTimeout(() => {
+    typeStoryLine(line, text, index + 1);
+  }, storyTypingSpeed);
+
+  storyTimers.push(timer);
 }
 
 function playStoryTrailer() {
@@ -287,17 +317,22 @@ function playStoryTrailer() {
   storyOverlay.classList.add('visible');
   storyOverlay.setAttribute('aria-hidden', 'false');
 
+  let totalDelay = 700;
+
   storyLines.forEach((line, index) => {
+    const text = storyLineTexts[index] || '';
+    const lineDuration = Math.max(1300, text.length * storyTypingSpeed + 700);
     const timer = setTimeout(() => {
-      line.classList.add('visible');
-    }, 700 + (index * 2400));
+      typeStoryLine(line, text);
+    }, totalDelay);
 
     storyTimers.push(timer);
+    totalDelay += lineDuration;
   });
 
   const closeTimer = setTimeout(() => {
     resetStoryTrailer();
-  }, 700 + (storyLines.length * 2400) + 2600);
+  }, totalDelay + 2000);
 
   storyTimers.push(closeTimer);
 }
